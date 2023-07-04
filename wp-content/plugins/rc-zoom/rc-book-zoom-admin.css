@@ -1,0 +1,9 @@
+.key-field {
+    width: 20rem;
+}
+.zoom-access-token {
+    word-wrap: break-word !important;
+    padding: 10px;
+    border: 1px solid #0073aa;
+    width: 30rem;
+}
