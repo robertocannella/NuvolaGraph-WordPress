@@ -1,0 +1,16 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/codeStyles/codeStyleConfig.xml
+/deployment.xml
+/modules.xml
+/NuvolaGraphWPEngine.iml
+/php.xml
+/codeStyles/Project.xml
+/sshConfigs.xml
+/webServers.xml
