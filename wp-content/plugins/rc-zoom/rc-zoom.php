@@ -18,18 +18,29 @@ include_once 'includes/RCDataEncryption.php';
 include_once 'includes/AdminFormConfiguration.php';
 include_once 'includes/AdminFormTokenInfo.php';
 include_once 'includes/AdminFormListMeetings.php';
+include_once 'includes/AdminFormCalendar.php';
+include_once 'includes/RCBookZoom_DB.php';
 
 class RCBookZoom {
+	private $db;
 
 	public function __construct( ) {
+
+		$this->db = new RCBookZoom_DB();
 		// add_filter('admin_footer_text', [$this,'rcFooterText']);
 		// add_filter('the_content',[$this,'ifWrap']);
 		add_action( 'wp_enqueue_scripts', [ $this, 'rcScriptLoader' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueueAdminScripts' ] );
+		add_action('init', [$this, 'init']);
+
 
 
 	}
-	function rcScriptLoader(): void {
+	public function init():void{
+		//Plugin Initialization
+		$this->db->create_tables();
+	}
+	public function rcScriptLoader(): void {
 
 		// FRONT END JavaScript
 		//wp_die(dirname(plugin_basename(__FILE__)) . '/rc-word-count-plugin.js');
@@ -47,13 +58,14 @@ class RCBookZoom {
 			wp_enqueue_script( 'rc-book-zoom-admin-js', plugins_url( '/rc-book-zoom-admin.js', __FILE__ ), null, time());
 			wp_enqueue_style( 'rc-book-zoom-admin-css', plugins_url( '/rc-book-zoom-admin.css', __FILE__ ), null, time() );
 		}
-
 	}
 
 
 
 }
+
 $rc_book_zoom = new RCBookZoom();
 $rc_book_zoom_form = new AdminFormConfiguration( new DataEncryption() );
 $rc_zoom_token_info = new AdminFormTokenInfo();
 $rc_zoom_list_meetings = new AdminFormListMeetings();
+$rc_zoom_calendar = new AdminFormCalendar();
