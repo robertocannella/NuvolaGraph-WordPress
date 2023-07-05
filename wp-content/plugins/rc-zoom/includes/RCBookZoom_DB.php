@@ -21,7 +21,6 @@ class RCBookZoom_DB {
 
 		// Check if tables exist
 		$usersTableExists = $this->wpdb->get_var("SHOW TABLES LIKE '$usersTable'") === $usersTable;
-		error_log("Users Table Exists: ".$usersTableExists);
 		$defaultTimeSlotsTableExists = $this->wpdb->get_var("SHOW TABLES LIKE '$defaultTimeSlotsTable'") === $defaultTimeSlotsTable;
 		$unavailableSlotsTableExists = $this->wpdb->get_var("SHOW TABLES LIKE '$unavailableSlotsTable'") === $unavailableSlotsTable;
 
@@ -31,6 +30,8 @@ class RCBookZoom_DB {
                 DefaultSlotID bigint(20) NOT NULL AUTO_INCREMENT,
                 UserID bigint(20) NOT NULL,
                 DayOfWeek VARCHAR(20) NOT NULL,
+                StartDate DATE NOT NULL,
+                EndDate DATE NOT NULL,
                 StartTime TIME NOT NULL,
                 EndTime TIME NOT NULL,
                 PRIMARY KEY (DefaultSlotID)

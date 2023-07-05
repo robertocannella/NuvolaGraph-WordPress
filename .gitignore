@@ -1,2 +1,6 @@
 /wp-config.php
 /.idea/vcs.xml
+/wp-content/plugins/rc-zoom/node_modules/
+/wp-content/plugins/rc-zoom/build/index.asset.php
+/wp-content/plugins/rc-zoom/build/index.js
+/wp-content/plugins/rc-zoom/build/index.js.map

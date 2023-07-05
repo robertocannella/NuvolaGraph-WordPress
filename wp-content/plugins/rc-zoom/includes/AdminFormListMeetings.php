@@ -7,7 +7,7 @@ class AdminFormListMeetings {
 
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'adminPage' ]);
-		$this->zoom = new Zoom();
+
 	}
 	public function adminPage():void {
 			add_submenu_page(
@@ -25,7 +25,7 @@ class AdminFormListMeetings {
 	 * @throws Exception
 	 */
 	public function zoomListMeetingsHtml():void{
-
+		$this->zoom = new Zoom();
 		$meetings = $this->zoom->getMeetings();
 
 		?>
