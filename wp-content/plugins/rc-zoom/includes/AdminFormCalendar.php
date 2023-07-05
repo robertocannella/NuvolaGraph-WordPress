@@ -17,9 +17,7 @@ class AdminFormCalendar {
 
 	}
 	public function zoomCalendarHtml():void {?>
-		<div class="wrap">
-			<h1>Calendar</h1>
-		</div>
+		<div id="rc-zoom-react-app"></div>
 		<?php
 	}
 }
