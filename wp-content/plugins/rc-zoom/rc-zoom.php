@@ -82,6 +82,7 @@ class RCBookZoom {
 			wp_enqueue_script( 'rc-book-zoom-admin-js', plugins_url( '/rc-book-zoom-admin.js', __FILE__ ), null, time() );
 			wp_enqueue_script( 'rc-book-zoom-index-js', plugins_url( '/build/index.js', __FILE__ ),  ['wp-element'], time() );
 			wp_enqueue_style( 'rc-book-zoom-admin-css', plugins_url( '/rc-book-zoom-admin.css', __FILE__ ), null, time() );
+			wp_enqueue_style( 'rc-book-zoom-tailwind-css', plugins_url( '/build/styles.css', __FILE__ ), null, time() );
 			wp_localize_script('rc-book-zoom-index-js','globalSiteData', [
 				'siteUrl' => get_site_url(),
 				'nonceX' => wp_create_nonce('wp_rest')

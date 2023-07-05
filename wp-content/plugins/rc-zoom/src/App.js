@@ -1,8 +1,8 @@
 const App = () => {
     return (
-        <div>
-            <h2>Hello World</h2>
-        </div>
+        <h1 className="text-3xl font-bold underline">
+            Hello world!
+        </h1>
     );
 };
 export default App;
