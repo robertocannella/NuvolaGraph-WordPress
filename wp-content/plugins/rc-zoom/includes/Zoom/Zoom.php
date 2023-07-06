@@ -69,6 +69,7 @@ class Zoom {
 						error_log("Refreshing Token");
 						$this->refreshToken();
 
+						return [];
 					}
 					error_log($response_code);
 					error_log(print_r($response_body, true));

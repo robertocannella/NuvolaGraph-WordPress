@@ -1,4 +1,5 @@
 const { render } = wp.element; //we are using wp.element here!
+
 import App from './App';
 import {MyAvailability} from "./js/modules/MyAvailability";
 
@@ -11,5 +12,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 })
 
 
+// Load Custom JS
 
 const myAvailability = new MyAvailability();

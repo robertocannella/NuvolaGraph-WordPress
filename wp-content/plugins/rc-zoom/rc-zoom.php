@@ -34,6 +34,9 @@ class RCBookZoom {
 		// add_filter('the_content',[$this,'ifWrap']);
 		add_action( 'wp_enqueue_scripts', [ $this, 'rcScriptLoader' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueueAdminScripts' ] );
+
+		// Add attributes to styles -- NOT SURE IF WE NEED THIS
+		// apply_filters('style_loader_tag',[$this, 'add_font_awesome_cdn_attributes']);
 		add_action( 'init', [ $this, 'init' ] );
 
 
@@ -59,11 +62,17 @@ class RCBookZoom {
 
 	public function rcScriptLoader(): void {
 
+		// Load tailwinds, temporarily for designing with inspector
+//		if (defined('WP_ENV') && WP_ENV === 'dev'){
+//				wp_enqueue_script('rc-tailwind-dev-css',"//cdn.tailwindcss.com",null,1.0, true);
+//		}
 		// FRONT END JavaScript
 		//wp_die(dirname(plugin_basename(__FILE__)) . '/rc-word-count-plugin.js');
 		//wp_die(plugins_url( '../rc-book-zoom-plugin.js', __FILE__ ));
 		wp_enqueue_script( 'rc-book-zoom-js', plugins_url( '/rc-book-zoom-plugin.js', __FILE__ ), null, time() );
+		wp_enqueue_script( 'rc-book-zoom-js', plugins_url( '/rc-book-zoom-plugin.js', __FILE__ ), null, time() );
 		wp_enqueue_style( 'rc-book-zoom-css', plugins_url( '/rc-book-zoom-plugin.css', __FILE__ ), null, time() );
+
 
 		wp_localize_script( 'rc-book-zoom-js', 'globalSite', [
 			'siteURL' => get_site_url()
@@ -72,6 +81,7 @@ class RCBookZoom {
 
 	public function enqueueAdminScripts( $hook ): void {
 		// Enqueue scripts only on your plugin's admin page
+
 		if ( isset( $_GET['page'] ) &&
 		     ( $_GET['page'] === 'rc-book-zoom-settings-page' ||
 		       $_GET['page'] === 'rc-book-zoom-token'         ||
@@ -79,6 +89,11 @@ class RCBookZoom {
 		       $_GET['page'] === 'rc-book-zoom-list-meetings'
 		     ) ) {
 
+			if (defined('WP_ENV') && WP_ENV === 'dev'){
+				wp_enqueue_script('rc-tailwind-dev-css',"//cdn.tailwindcss.com",null,1.0, true);
+			}
+
+			wp_enqueue_script('font-awesome-6', '//kit.fontawesome.com/a681bea563.js',null,6.0);
 			wp_enqueue_script( 'rc-book-zoom-admin-js', plugins_url( '/rc-book-zoom-admin.js', __FILE__ ), null, time() );
 			wp_enqueue_script( 'rc-book-zoom-index-js', plugins_url( '/build/index.js', __FILE__ ),  ['wp-element'], time() );
 			wp_enqueue_style( 'rc-book-zoom-admin-css', plugins_url( '/rc-book-zoom-admin.css', __FILE__ ), null, time() );
@@ -89,9 +104,16 @@ class RCBookZoom {
 			]);
 
 		}
+
 	}
 
-
+	private function add_font_awesome_cdn_attributes( $html, $handle ) {
+		error_log($handle);
+		if ( 'font-awesome-6' === $handle ) {
+			return str_replace( "media='all'", "media='all' crossorigin='anonymous'", $html );
+		}
+		return $html;
+	}
 }
 
 $rc_book_zoom          = new RCBookZoom();

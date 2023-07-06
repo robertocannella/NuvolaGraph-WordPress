@@ -31,7 +31,10 @@ class AdminFormTokenInfo {
                     // If User clicked Refresh Token, process that request.
 		            if (isset($_POST['btn-refresh-token'])){
 			            $zoom = new Zoom();
+                        esc_html__('Token expired. Refreshing...please wait.', 'rc-book-zoom');
 			            $zoom->refreshToken();
+                        header('refresh: 3');
+
 		            }
 		            settings_fields( 'bookzoomtoken' );
 		            do_settings_sections( 'rc-book-zoom-token' );
