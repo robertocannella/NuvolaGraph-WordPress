@@ -24,7 +24,6 @@ export default function ListGroup({items, heading}: Props) {
         setTimes([...updatedTimes]);
     }
 
-
     return (
         <>
             <h1 className={"text-lg"}>{heading}</h1>
