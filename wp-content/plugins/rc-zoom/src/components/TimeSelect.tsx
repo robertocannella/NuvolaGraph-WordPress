@@ -55,7 +55,7 @@ export default function TimeSelect() {
                 key={option.value}
                 className={
                     selectedValue === option.value
-                        ? 'selected bg-violet-200 border border-violet-400' + selectBoxStyles
+                        ? 'selected bg-violet-200 border border-violet-400 ' + selectBoxStyles
                         : selectBoxStyles
                 }
                 ref={selectedValue === option.value ? ref : null}
@@ -73,13 +73,13 @@ export default function TimeSelect() {
                 {selectedHour}:{selectedMinute} {selectedPeriod}
             </div>
             <div className="custom-select h-32 flex border-slate-500 border rounded">
-                <ul className="options no-scrollbar overflow-scroll mx-2">
+                <ul className="options no-scrollbar overflow-scroll mx-2 bg-slate-100">
                     {renderOptions(hours, selectedHour, handleHourChange, hourRef)}
                 </ul>
-                <ul className="options no-scrollbar overflow-scroll mx-2">
+                <ul className="options no-scrollbar overflow-scroll mx-2 bg-slate-100">
                     {renderOptions(minutes, selectedMinute, handleMinuteChange, minuteRef)}
                 </ul>
-                <ul className="options mx-2">
+                <ul className="options mx-2 bg-slate-100 no-scrollbar">
                     {renderOptions(periods, selectedPeriod, handlePeriodChange, null)}
                 </ul>
             </div>
