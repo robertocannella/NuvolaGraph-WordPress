@@ -38,6 +38,7 @@ class RCBookZoom_API {
 			$availability_data = array();
 			foreach ($results as $result) {
 				$availability_data[] = array(
+					'id'=> $result->DefaultSlotID,
 					'day_of_week' => $result->DayOfWeek,
 					'start_date' => $result->StartDate,
 					'end_date' => $result->EndDate,
@@ -81,6 +82,7 @@ class RCBookZoom_API {
 			$exception_data = array();
 			foreach ($results as $result) {
 				$exception_data[] = array(
+					'id'=> $result->SlotId,
 					'day_of_week' => $result->DayOfWeek,
 					'start_date' => $result->StartDate,
 					'end_date' => $result->EndDate,

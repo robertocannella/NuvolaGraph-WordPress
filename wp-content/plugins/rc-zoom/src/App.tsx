@@ -1,6 +1,7 @@
 
 import ListGroup from "./components/ListGroup";
 import DailyListGroup from "./components/DailyListGroup";
+import TimeSelect from "./components/TimeSelect";
 
 
 
@@ -11,9 +12,12 @@ const App = () => {
 
     return (
             <div className="grid grid-cols-2 gap-6 p-3 mt-4 mr-4 w-4/5">
+
                 <div className="shadow bg-white rounded-lg p-3">
+                    <TimeSelect/>
                     <DailyListGroup heading={"General Availability"} days={days}/>
                 </div>
+
                 <div className="shadow bg-white rounded-lg p-3">
                     <DailyListGroup days={days} heading={"Exceptions"}/>
                 </div>

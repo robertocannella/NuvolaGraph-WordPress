@@ -31,6 +31,7 @@
     "@wordpress/element": "^5.14.0",
     "axios": "^1.4.0",
     "formik": "^2.4.2",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "react-time-picker": "^6.2.0"
   }
 }
